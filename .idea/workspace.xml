@@ -6,11 +6,27 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4072ad5c-a787-46fd-99ae-f3b76c53e84d" name="Default Changelist" comment="" />
+    <list default="true" id="4072ad5c-a787-46fd-99ae-f3b76c53e84d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ToFindGold_jar/ToFindGold.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ToFindGold_jar/ToFindGold.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ToFindGold/META-INF/ToFindGold.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ToFindGold/MainLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ToFindGold/MainLevel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphics/HowToPlayBG.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/HowToPlayBG.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphics/HudIconSprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/HudIconSprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphics/MenuTextSprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/MenuTextSprites.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphics/PressEnterText.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/PressEnterText.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphics/TitleSprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/TitleSprite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphics/hudPanel.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/hudPanel.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -18,6 +34,12 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1QXuqK09t2pqkEtsbiLwkqVkdAH" />
   <component name="ProjectViewState">
@@ -31,6 +53,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -45,7 +68,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="应用程序.Main">
     <configuration name="GenerateMap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="wworld.GenerateMap" />
       <module name="ToFindGold" />
@@ -62,8 +85,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GenerateMap" />
+        <item itemvalue="应用程序.Main" />
       </list>
     </recent_temporary>
   </component>
