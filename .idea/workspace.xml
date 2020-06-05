@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ToFindGold:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4072ad5c-a787-46fd-99ae-f3b76c53e84d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1QXuqK09t2pqkEtsbiLwkqVkdAH" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="GenerateMap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="wworld.GenerateMap" />
+      <module name="ToFindGold" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ToFindGold" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GenerateMap" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4072ad5c-a787-46fd-99ae-f3b76c53e84d" name="Default Changelist" comment="" />
+      <created>1567929451444</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1567929451444</updated>
+      <workItem from="1567929458081" duration="1524000" />
+      <workItem from="1568081987537" duration="16494000" />
+      <workItem from="1591147928296" duration="784000" />
+      <workItem from="1591150261344" duration="1549000" />
+      <workItem from="1591272976216" duration="10614000" />
+      <workItem from="1591284158380" duration="1899000" />
+      <workItem from="1591286572221" duration="317000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="7" key="#Project_Structure" timestamp="1591276004069">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="233" y="7" key="#Project_Structure/0.0.1280.689@0.0.1280.689" timestamp="1591276004069" />
+    <state x="371" y="134" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591275567510">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="371" y="134" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.689@0.0.1280.689" timestamp="1591275567510" />
+    <state x="492" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1591286576381">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="492" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1280.689@0.0.1280.689" timestamp="1591286576381" />
+    <state x="421" y="77" key="FileChooserDialogImpl" timestamp="1591148609373">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="77" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1591148609373" />
+    <state width="1237" height="114" key="GridCell.Tab.0.bottom" timestamp="1591286889231">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="114" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
+    <state width="1237" height="114" key="GridCell.Tab.0.center" timestamp="1591286889231">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="114" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
+    <state width="1237" height="114" key="GridCell.Tab.0.left" timestamp="1591286889231">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="114" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
+    <state width="1237" height="114" key="GridCell.Tab.0.right" timestamp="1591286889231">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="114" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1591278050828">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1591278050828" />
+    <state x="297" y="153" key="run.anything.popup" timestamp="1591102874212">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="297" y="153" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1591102874212" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1591103977580">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1591103977580" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MenuLevel.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MenuBackgroundsSprite.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MenuSprite.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MenuBackgroundsSprite.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

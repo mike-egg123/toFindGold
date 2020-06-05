@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ToFindGold:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ToFindGold_jar</output-path>
+    <root id="archive" name="ToFindGold.jar">
+      <element id="module-output" name="ToFindGold" />
+    </root>
+  </artifact>
+</component>
