@@ -147,8 +147,9 @@ public class GenerateMap {
             // generate 'G'
             while (true) {
                 int x = rand(1, 10), y = rand(1, 10);
-                if (!(x == 1 && y == 1) && map[x][y] == '.') {
-                    map[x][y] = 'G';
+                if (!(x == 1 && y == 1) && (map[x][y] == '.' || map[x][y] == 'P')) {
+                    if (map[x][y] == '.')
+                        map[x][y] = 'G';
                     G = new Point(x, y);
                     break;
                 }
