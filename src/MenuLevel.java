@@ -178,8 +178,8 @@ public class MenuLevel extends Level
         graphics2d.clearRect(0, 0, 340, 288);
         menuBg.render(graphics2d);
         title.render(graphics2d);
-        graphics2d.setColor(new Color(200, 0, 50));
-        graphics2d.drawString("Created by coding-fish in 2019/08", 10, 286);//加个水印
+        //graphics2d.setColor(new Color(200, 0, 50));
+        //graphics2d.drawString("Created by coding-fish in 2019/08", 10, 286);//加个水印时间戳
         aiGame.render(graphics2d);
         normalGame.render(graphics2d);
         howToPlay.render(graphics2d);
