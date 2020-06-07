@@ -7,18 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4072ad5c-a787-46fd-99ae-f3b76c53e84d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/ToFindGold_jar/ToFindGold.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ToFindGold_jar/ToFindGold.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ToFindGold/META-INF/ToFindGold.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ToFindGold/MainLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ToFindGold/MainLevel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphics/HowToPlayBG.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/HowToPlayBG.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphics/HudIconSprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/HudIconSprites.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphics/MenuTextSprites.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/MenuTextSprites.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphics/PressEnterText.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/PressEnterText.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphics/TitleSprite.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/TitleSprite.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphics/hudPanel.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphics/hudPanel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HowToPlayLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HowToPlayLevel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +60,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
   </component>
-  <component name="RunManager" selected="应用程序.Main">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="GenerateMap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="wworld.GenerateMap" />
       <module name="ToFindGold" />
@@ -85,7 +77,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -106,6 +98,7 @@
       <workItem from="1591272976216" duration="10614000" />
       <workItem from="1591284158380" duration="1899000" />
       <workItem from="1591286572221" duration="317000" />
+      <workItem from="1591518896439" duration="2336000" />
     </task>
     <servers />
   </component>
@@ -129,22 +122,22 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="421" y="77" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1591148609373" />
-    <state width="1237" height="114" key="GridCell.Tab.0.bottom" timestamp="1591286889231">
+    <state width="1237" height="114" key="GridCell.Tab.0.bottom" timestamp="1591521235224">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="114" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
-    <state width="1237" height="114" key="GridCell.Tab.0.center" timestamp="1591286889231">
+    <state width="1237" height="114" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1591521235224" />
+    <state width="1237" height="114" key="GridCell.Tab.0.center" timestamp="1591521235224">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="114" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
-    <state width="1237" height="114" key="GridCell.Tab.0.left" timestamp="1591286889231">
+    <state width="1237" height="114" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1591521235224" />
+    <state width="1237" height="114" key="GridCell.Tab.0.left" timestamp="1591521235224">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="114" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
-    <state width="1237" height="114" key="GridCell.Tab.0.right" timestamp="1591286889231">
+    <state width="1237" height="114" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1591521235224" />
+    <state width="1237" height="114" key="GridCell.Tab.0.right" timestamp="1591521235224">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="114" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1591286889231" />
+    <state width="1237" height="114" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1591521235224" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1591278050828">
       <screen x="0" y="0" width="1280" height="689" />
     </state>

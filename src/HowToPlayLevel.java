@@ -500,78 +500,81 @@ public class HowToPlayLevel extends Level
         graphics2d.setColor(new Color(255, 255, 255));
         if(slideNum == 0)
         {
-            graphics2d.drawString("You will control a Hero.", 24, 96);
-            graphics2d.drawString("Your goal is to find gold,and gold", 192, 96);
-            graphics2d.drawString("belongs to the wise and brave!", 192, 111);
+            graphics2d.setFont(new Font("宋体", Font.BOLD, 8));
+            graphics2d.drawString("你将控制一个英雄，", 24, 96);
+            graphics2d.drawString("你的目标是找到金币，", 192, 96);
+            graphics2d.drawString("金币只属于勇敢的和智慧的人。", 192, 111);
         } else
         if(slideNum == 1)
         {
-            drawCenteredString("The cave you explore is very dark.You can only", 168, 48, graphics2d);
-            drawCenteredString("see what you have been to. ", 168, 63, graphics2d);
-            drawCenteredString("Walls are also hidden and you cannot go through it.", 168, 78, graphics2d);
+            drawCenteredString("你探索的洞穴十分黑暗，你只能", 168, 48, graphics2d);
+            drawCenteredString("看到你所到过的地方，", 168, 63, graphics2d);
+            drawCenteredString("墙壁也是隐藏起来的，你无法穿过它们。", 168, 78, graphics2d);
         } else
         if(slideNum == 2)
         {
-            drawCenteredString("This is the Wumpus.", 72, 48, graphics2d);
-            drawCenteredString("He will kill you when you pass it.", 72, 63, graphics2d);
-            drawCenteredString("There is stench around him.", 72, 78, graphics2d);
+            drawCenteredString("这个是臭臭怪，", 72, 48, graphics2d);
+            drawCenteredString("在你经过它的时候它将杀死你。", 72, 63, graphics2d);
+            drawCenteredString("在它的四周环绕着恶臭气味。", 72, 78, graphics2d);
             //drawCenteredString("You can kill it with your arrow.", 72, 93, graphics2d);
-            drawCenteredString("This is a pit.", 240, 72, graphics2d);
-            drawCenteredString("Pits have breeze around themselves.", 240, 87, graphics2d);
-            drawCenteredString("Pits can also kill you.", 240, 102, graphics2d);
-            drawCenteredString("So keep away from it.", 240, 117, graphics2d);
+            drawCenteredString("这是一个陷阱。", 240, 72, graphics2d);
+            drawCenteredString("在陷阱四周环绕着微风。", 240, 87, graphics2d);
+            drawCenteredString("陷阱同样可以杀死你，", 240, 102, graphics2d);
+            drawCenteredString("因此，请远离它。", 240, 117, graphics2d);
         } else
         if(slideNum == 3)
         {
-            drawCenteredString("This is the Supmuw.", 72, 48, graphics2d);
-            drawCenteredString("He likes saying \"Moo\"!", 72, 63, graphics2d);
-            drawCenteredString("Supmuw is friendly", 72, 78, graphics2d);
-            drawCenteredString("and he'll give you bonus when you pass it.", 72, 93, graphics2d);
-            drawCenteredString("However, when he stands around Wumpus,", 240, 48, graphics2d);
-            drawCenteredString("he will turn bad.", 240, 63, graphics2d);
-            drawCenteredString("And if the Supmuw is in a pit, ", 240, 168, graphics2d);
-            drawCenteredString("he will drag you into it.", 240, 183, graphics2d);
+            drawCenteredString("这个是哞哞怪，", 72, 48, graphics2d);
+            drawCenteredString("它喜欢说：\"Moo\"！", 72, 63, graphics2d);
+            drawCenteredString("哞哞怪是友好的，", 72, 78, graphics2d);
+            drawCenteredString("经过它身边时，你会得到鸡腿并且加分。", 80, 93, graphics2d);
+            drawCenteredString("然而，当它站在臭臭怪的恶臭中时，", 240, 48, graphics2d);
+            drawCenteredString("它会变得邪恶。", 240, 63, graphics2d);
+            drawCenteredString("同时，当哞哞怪在陷阱中时，", 240, 168, graphics2d);
+            drawCenteredString("他将把你拖进深渊！", 240, 183, graphics2d);
         } else
         if(slideNum == 4)
         {
-            drawCenteredString("You have an arrow in your bag.", 168, 48, graphics2d);
-            drawCenteredString("You can kill Wumpus when you face it.", 168, 63, graphics2d);
-            drawCenteredString("But you have ONLY one.", 168, 78, graphics2d);
-            drawCenteredString("And don't hurt Supmuw by mistake.",168,95,graphics2d);
+            drawCenteredString("在你的背包里有一支箭矢，", 168, 48, graphics2d);
+            drawCenteredString("当你遇到臭臭怪时你可以射死他，", 168, 63, graphics2d);
+            drawCenteredString("但请记住，你只有一支！", 168, 78, graphics2d);
+            drawCenteredString("并且，请不要误伤了友好的哞哞怪。",168,95,graphics2d);
         } else
         if(slideNum == 5)
         {
-            drawCenteredString("When you have found the gold,", 168, 48, graphics2d);
-            drawCenteredString("go back to where you start,", 168, 63, graphics2d);
-            drawCenteredString("and climb out to be VICTORIOUS!,", 168, 78, graphics2d);
+            drawCenteredString("当你看到亮闪闪的金子时，按下enter将其收入囊中，", 168, 48, graphics2d);
+            drawCenteredString("回到出发地，", 168, 63, graphics2d);
+            drawCenteredString("再按下enter，你就获得了胜利！", 168, 78, graphics2d);
         } else
         if(slideNum == 6)
         {
-            drawCenteredString("You should control with the keyboard:", 168, 48, graphics2d);
-            drawCenteredString("Turn left ...................LEFT", 168, 78, graphics2d);
-            drawCenteredString("Turn right ...............RIGHT", 168, 93, graphics2d);
-            drawCenteredString("Move forward ...............UP", 168, 108, graphics2d);
-            drawCenteredString("Grab gold ...............ENTER", 168, 123, graphics2d);
-            drawCenteredString("Shoot arrow .............SHIFT", 168, 138, graphics2d);
-            drawCenteredString("Climb out of cave ........CTRL", 168, 153, graphics2d);
-            drawCenteredString("Return to Menu ............ESC", 168, 168, graphics2d);
+            drawCenteredString("你将使用键盘操作：", 168, 48, graphics2d);
+            drawCenteredString("向左转 ...................LEFT", 168, 78, graphics2d);
+            drawCenteredString("向右转 ...............RIGHT", 168, 93, graphics2d);
+            drawCenteredString("向前走 ...............UP", 168, 108, graphics2d);
+            drawCenteredString("获得金子 ...............ENTER", 168, 123, graphics2d);
+            drawCenteredString("发射箭矢 .............SHIFT", 168, 138, graphics2d);
+            drawCenteredString("爬出洞穴 ........CTRL", 168, 153, graphics2d);
+            drawCenteredString("回到菜单 ............ESC", 168, 168, graphics2d);
         } else
         if(slideNum == 7)
         {
-            drawCenteredString("About", 168, 48, graphics2d);
+            drawCenteredString("关于", 168, 48, graphics2d);
             //drawCenteredString("Design: coding-fish", 168, 78, graphics2d);
-            drawCenteredString("This game is partly programmed by coding-fish,", 168, 93, graphics2d);
-            drawCenteredString("and some sounds and images sources come from Internet.", 168, 108, graphics2d);
-            drawCenteredString("If some content violates your copyright,", 168, 123, graphics2d);
-            drawCenteredString("please cantact me in time.", 168, 138, graphics2d);
-            drawCenteredString("And if you have better suggestion,", 168, 153, graphics2d);
-            drawCenteredString("please tell me to improve it.", 168, 168, graphics2d);
+            drawCenteredString("此游戏由脱发疗养院团队制作，", 168, 93, graphics2d);
+            drawCenteredString("其中的音效和图片均下载自互联网，", 168, 108, graphics2d);
+            drawCenteredString("如果其中的内容侵犯了您的权利，", 168, 123, graphics2d);
+            drawCenteredString("请及时与我们联系，", 168, 138, graphics2d);
+            drawCenteredString("同时，如果您有更好的意见和建议，", 168, 153, graphics2d);
+            drawCenteredString("请告知我们，以便改进", 168, 168, graphics2d);
+            drawCenteredString("联系邮箱：YouWillNeverContactUs@250.com", 168, 183, graphics2d);
         }
         enterSprite.render(graphics2d);
     }
 
     public void drawCenteredString(String s, int i, int j, Graphics g)
     {
+        g.setFont(new Font("宋体", Font.BOLD, 8));
         FontMetrics fontmetrics = g.getFontMetrics();
         i -= fontmetrics.stringWidth(s) / 2;
         g.drawString(s, i, j);
