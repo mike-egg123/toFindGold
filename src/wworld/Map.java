@@ -1,5 +1,8 @@
 package wworld;
 
+/**
+ * 这是原本用来存放加载进来的地图文件的，但后来改了，就废弃了
+ */
 public class Map {
     final int mapNums = 8;
     final String[] mapStrings = new String[mapNums];

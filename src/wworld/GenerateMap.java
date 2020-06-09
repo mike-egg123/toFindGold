@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 用于随机生成地图，包装了算法
+ */
 public class GenerateMap {
     // Usage: call method "void generateMap(String path, String fileName)" to print the map information into specified path and file name. The last 3 lines of the output file correspond to "coin", "bad monster" and "good monster" in order.
     private int PROB;             // diffusion probability: 1 ~ 100
@@ -19,6 +22,12 @@ public class GenerateMap {
     public int Bx;
     public int By;
 
+    /**初始化
+     * @param prob 是路的概率
+     * @param min_point 可走格数
+     * @param p_RATIO 陷阱系数
+     * @param print_map 是否要在控制台打印生成的地图
+     */
     public GenerateMap(int prob,int min_point,double p_RATIO, boolean print_map){
         this.P_RATIO = p_RATIO;
         this.MIN_POINT = min_point;
@@ -27,6 +36,9 @@ public class GenerateMap {
     }
 
 
+    /**
+     * 坐标类
+     */
     private class Point {
         int x, y;
 
@@ -46,11 +58,21 @@ public class GenerateMap {
 
     }
 
+    /**
+     * 在给定范围内随机生成一个整数
+     * @param min 下界
+     * @param max 上界
+     * @return 一个随机数
+     */
     private static int rand(int min, int max) {
         // min <= max
         return (int) (Math.random() * (max - min + 1)) + min;
     }
 
+    /**
+     * 利用bfs随机生成地图
+     * @return 存放地图信息的二维数组
+     */
     public char[][] generateMap() {
         /*
          *  .   road

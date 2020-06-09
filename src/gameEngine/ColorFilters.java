@@ -4,13 +4,29 @@ import java.awt.*;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.RGBImageFilter;
 
+/**
+ * 由于游戏素材中的大量图片为正方形，而游戏界面中只需显示对象本身，在这个类中主要构造了
+ * setTransparentColor 和 setSemiTransparency 方法。首先约定所有图片素材的背景均为
+ * RGB下的0xff00ff，然后在第一个方法中将其设为透明色，在后一个方法中将其设置为透明。
+ * 对每一张图片分别调用这种方法，可以实现图片只显示中央的人物而不显示背景颜色，使用该
+ * 种方法的原因是我们团队的ps技术都十分辣鸡。
+ */
 public class ColorFilters
 {
 
+    /**
+     * 写了等于没写的构造函数，这明显在水代码
+     */
     public ColorFilters()
     {
     }
 
+    /**
+     * 将背景色为0xff00ff转成透明色
+     * @param image 将要被转变的图片
+     * @param color 颜色常量：0xff00ff
+     * @return 背景色被设置成透明的图片
+     */
     public static Image setTransparentColor(Image image,final Color color)
     {
         RGBImageFilter rgbimagefilter = new RGBImageFilter() {
@@ -34,6 +50,12 @@ public class ColorFilters
         return image1;
     }
 
+    /**
+     * 将透明色设置成透明（即不可见）
+     * @param image 将要被转变的图片
+     * @param d 透明度
+     * @return 背景变成透明的图片
+     */
     public static Image setSemiTransparency(Image image, double d)
     {
         if(d > 1.0D)

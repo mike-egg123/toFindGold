@@ -1,8 +1,17 @@
 package wworld;
 
+/**
+ * 天使类，记录天使的状态
+ */
 public class Supmuw
 {
 
+    /**
+     * 初始化天使
+     * @param i 横坐标
+     * @param j 纵坐标
+     * @param cavenode 将要绑定的洞穴元素
+     */
     public Supmuw(int i, int j, CaveNode cavenode)
     {
         x = i;
@@ -12,6 +21,11 @@ public class Supmuw
         supmuwNode = cavenode;
     }
 
+    /**
+     * 指示天使所处的状态
+     * @param agent ai玩家
+     * @return "BONUSGET"表示得到奖励，"DIE"表示此时的天使是坏的，经过将会死亡，"SUPMUWWAVES"表示已经没有奖励了
+     */
     public String encounter(Agent agent)
     {
         if(isFriendly && hasFood)
@@ -32,6 +46,9 @@ public class Supmuw
         }
     }
 
+    /**
+     * 更新天使的模式，好或者坏，在洞里或者不在洞里
+     */
     public void updateMode()
     {
         if(supmuwNode.hasStench)

@@ -2,8 +2,10 @@ package wworld;
 
 import java.util.Vector;
 
-public class PriorityCaveNode
-    implements Comparable
+/**
+ * 优先队列类，当存在两条决策路径时，比较得到较优解
+ */
+public class PriorityCaveNode implements Comparable
 {
 
     public PriorityCaveNode(CaveNode cavenode, int i, Vector vector, char c)

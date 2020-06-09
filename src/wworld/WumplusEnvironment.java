@@ -4,9 +4,16 @@ import java.awt.Point;
 import java.util.*;
 import java.io.*;
 
+/**
+ * 地图生成类，可以根据难度生成地图
+ */
 public class WumplusEnvironment
 {
 
+    /**
+     * 根据难度生成地图
+     * @param s 难度标识符，"easy" "hard"表示简单和困难
+     */
     public WumplusEnvironment(String s)
     {
         grid = new Hashtable();
@@ -24,6 +31,9 @@ public class WumplusEnvironment
         agent = new Agent();
     }
 
+    /**
+     * 初始化所有对象
+     */
     private void initAllPercepts()
     {
         for(int i = 0; i <= 11; i++)
@@ -38,6 +48,10 @@ public class WumplusEnvironment
 
     }
 
+    /**
+     * 初始化洞穴元素对象
+     * @param cavenode 洞穴元素对象
+     */
     private void initPercepts(CaveNode cavenode)
     {
         if(cavenode.hasPit)
@@ -80,175 +94,38 @@ public class WumplusEnvironment
     private int[] visited = new int[101];   //为便于访问，采取一维数组
     private int pathlength = 0;
     private int cnt = 0;
-    private void checkmap1()
-    {
 
-        for(int i = 1; i <= 10; i++)
-        {
-            for(int j = 1; j <= 10; j++)
-            {
-                Point testPoint = new Point(i, j);
-                CaveNode test = new CaveNode(testPoint.x, testPoint.y);
-                grid.put(testPoint, test);
-                if(test.hasPit || test.hasWumpus || test.hasObstacle)
-                {
-                    noway[i][j] = 1;cnt++;
-                }
-
-            }
-        }
-        for(int i = 0; i <= 11; i++)noway[i][0] = noway[i][11] = 1;
-        for(int i = 0; i <= 11; i++)noway[0][i] = noway[11][i] = 1;
-        for(int i = 0; i < 100; i++)visited[i] = 0;
-        System.out.println("initialize map success!" + cnt);
-    }
-    private void checkmap2(int x, int y)
-    {
-        CaveNode checknode = (CaveNode)grid.get(new Point(x, y));
-
-        if(noway[x][y] == 0 && visited[x + (y - 1) * 10] == 0)
-        {
-            visited[x  + (y - 1) * 10] = 1;
-            System.out.println("now point: " + checknode.x + "," + checknode.y);
-            if(x == gold.x && y == gold.y)
-            {
-                havevalidpath = 1;
-                return;
-            }
-            else
-            {
-                checkmap2(x + 1, y);
-                checkmap2(x, y + 1);
-                checkmap2(x, y - 1);
-                checkmap2(x - 1, y);
-            }
-            visited[x  + (y - 1) * 10] = 0;
-            return;
-        }
-        else
-            return;
-
-    }
-
+    /**
+     * 随机生成简单地图（陷阱较少）
+     */
     private void initRandomEasyEnvironment()
     {
-
-        Random random = new Random();
-//        do {
-//            havevalidpath = 0;
-//            for(int i = 1; i <= 10; i++)
-//            {
-//                for(int j = 1; j <= 10; j++)
-//                {
-//                    Point point = new Point(j, i);
-//                    CaveNode cavenode = new CaveNode(point.x, point.y);
-//                    grid.put(point, cavenode);
-//                    if(i == 1 && j == 1)            //出发点（也是出口）
-//                    {
-//                        cavenode.isSafe = true;
-//                        cavenode.wasVisited = true;
-//                        cavenode.pitProbability = 0.0D;
-//                        cavenode.wumpusProbability = 0.0D;
-//                        cavenode.supmuwProbability = 0.0D;
-//                    } else
-//                    {
-//                        unvisitedNodes.add(cavenode);
-//                    }
-//                    int j1 = random.nextInt(100);
-//                    if(!cavenode.hasGold && !cavenode.hasEntrance)
-//                    {
-//                        getClass();
-//                        if(j1 <= 7)
-//                            initPitNode(cavenode);
-//                    }
-//                    int j2 = random.nextInt(100);
-//                    if(cavenode.hasPit || cavenode.hasGold || cavenode.hasEntrance)
-//                        continue;
-//                    getClass();
-//                    if(j2 <= 15)
-//                        initObstacleNode(cavenode);
-//                }
-//
-//            }
-//
-//            boolean flag = false; //whether create a wumpus point
-//            boolean flag1 = false;//whether create a supmuw point
-//            boolean flag2 = false;//whether create a gold point
-//            do
-//            {
-//                if(flag2)
-//                    break;
-//                int k = random.nextInt(10) + 1;
-//                int k1 = random.nextInt(10) + 1;
-//                CaveNode cavenode3 = (CaveNode)grid.get(new Point(k,k1));
-//                if(!cavenode3.hasObstacle && !cavenode3.hasPit)
-//                {
-//                    initGoldNode(cavenode3);
-//                    flag2 = true;
-//                }
-//            } while(true);
-//            do
-//            {
-//                if(flag)
-//                    break;
-//                int l = random.nextInt(10) + 1;
-//                int l1 = random.nextInt(10) + 1;
-//                CaveNode cavenode1 = (CaveNode)grid.get(new Point(l, l1));
-//                if(!cavenode1.hasEntrance && !cavenode1.hasObstacle)
-//                {
-//                    initWumpusNode(cavenode1);
-//                    flag = true;
-//                }
-//            } while(true);
-//            do
-//            {
-//                if(flag1)
-//                    break;
-//                int i1 = random.nextInt(10) + 1;
-//                int i2 = random.nextInt(10) + 1;
-//                CaveNode cavenode2 = (CaveNode)grid.get(new Point(i1, i2));
-//                if(!cavenode2.hasObstacle && !cavenode2.hasEntrance)
-//                {
-//                    initSupmuwNode(cavenode2);
-//                    flag1 = true;
-//                }
-//            } while(true);
-//            //checkmap1();
-//            //checkmap2(1, 1);
-//        } while(havevalidpath == 1);///////////////////////
-        //System.out.println("gold.x = " + gold.x + "gold.y = " + gold.y);//正常
-        //以下是修改后的随机加载地图代码，通过直接调用指定加载地图代码，生成随机下标，来实现随机加载地图。
-//        String[] strArr = new String[4];
-//        for(int i = 0;i < 4;i++){
-//            strArr[i] = "maps/map" + (i + 1);
-//        }
-//        String mapStr = strArr[random.nextInt(4)];
-//        String mapFileName = "map";
-//        String pathName = "./maps";
-//        String mapStr = pathName + "/" + mapFileName;
         GenerateMap gEasy = new GenerateMap(80, 10, 0.1, false);
         char[][] arrs = new char[10][10];
         arrs = gEasy.generateMap();
-        //System.out.println(mapStr);
         initLoadedEnvironment(arrs,gEasy.Cx,gEasy.Cy,gEasy.Bx,gEasy.By,gEasy.Gx,gEasy.Gy);
     }
+
+    /**
+     * 随机生成简单地图（陷阱较多）
+     */
     private void initRandomHardEnvironment(){
-//        Random random = new Random();
-//        String[] strArr = new String[4];
-//        for(int i = 0;i < 4;i++){
-//            strArr[i] = "maps/map" + (i + 5);
-//        }
-//        String mapStr = strArr[random.nextInt(4)];
-//        String mapFileName = "map";
-//        String pathName = "./maps";
-//        String mapStr = pathName + "/" + mapFileName;
         GenerateMap gHard = new GenerateMap(80, 10, 0.15, false);
         char[][] arrs = new char[10][10];
         arrs = gHard.generateMap();
-        //System.out.println(mapStr);
         initLoadedEnvironment(arrs,gHard.Cx,gHard.Cy,gHard.Bx,gHard.By,gHard.Gx,gHard.Gy);
     }
 
+    /**
+     * 根据给的存放地图信息的二维数组生成地图
+     * @param arrs 存放地图信息的二维数组
+     * @param cx 金子横坐标
+     * @param cy 金子纵坐标
+     * @param bx 坏怪横坐标
+     * @param by 坏怪纵坐标
+     * @param gx 好怪横坐标
+     * @param gy 好怪纵坐标
+     */
     private void initLoadedEnvironment(char[][] arrs, int cx,int cy,int bx,int by,int gx,int gy)
     {
         //Fileinput fileinput = new Fileinput(s);
@@ -297,6 +174,9 @@ public class WumplusEnvironment
         initSupmuwNode(cavenode);
     }
 
+    /**
+     * 构建洞穴边界，全是墙
+     */
     public void createCaveBorder()
     {
         for(int i = 0; i <= 11; i++)
@@ -329,11 +209,19 @@ public class WumplusEnvironment
 
     }
 
+    /**
+     * 初始化在路上的障碍物，即路上墙
+     * @param cavenode 将要绑定的洞穴元素
+     */
     private void initObstacleNode(CaveNode cavenode)
     {
         cavenode.hasObstacle = true;
     }
 
+    /**
+     * 初始化好怪
+     * @param cavenode 将要绑定的洞穴元素
+     */
     private void initSupmuwNode(CaveNode cavenode)
     {
         cavenode.hasSupmuw = true;
@@ -341,6 +229,10 @@ public class WumplusEnvironment
         supmuw = new Supmuw(cavenode.x, cavenode.y, cavenode);
     }
 
+    /**
+     * 初始化坏怪
+     * @param cavenode 将要绑定的洞穴元素
+     */
     private void initWumpusNode(CaveNode cavenode)
     {
         cavenode.hasWumpus = true;
@@ -348,17 +240,31 @@ public class WumplusEnvironment
         wumpus = new Wumpus(cavenode.x, cavenode.y);
     }
 
+    /**
+     * 初始化陷阱
+     * @param cavenode 将要绑定的洞穴元素
+     */
     private void initPitNode(CaveNode cavenode)
     {
         cavenode.hasPit = true;
     }
 
+    /**
+     * 初始化金子
+     * @param cavenode 将要绑定的洞穴元素
+     */
     private void initGoldNode(CaveNode cavenode)
     {
         cavenode.hasGold = true;
         gold = new Gold(cavenode.x, cavenode.y);
     }
 
+    /**
+     * 得到玩家的下一个位置坐标
+     * @param cavenode 绑定了当前位置的洞穴元素
+     * @param c 方向
+     * @return 绑定下一个位置坐标的洞穴元素
+     */
     public CaveNode getNextNode(CaveNode cavenode, char c)
     {
         int i = cavenode.x;
@@ -388,6 +294,11 @@ public class WumplusEnvironment
         return (CaveNode)grid.get(new Point(i, j));
     }
 
+    /**
+     * 分别将周围四个方向加入队列，尝试得到下一步决策
+     * @param cavenode 绑定了当前位置的洞穴元素
+     * @return 加入了四个方向信息的队列
+     */
     public Vector get4AdjacentNodes(CaveNode cavenode)
     {
         Vector vector = new Vector();
@@ -398,6 +309,11 @@ public class WumplusEnvironment
         return vector;
     }
 
+    /**
+     * 分别将周围八个方向加入队列，尝试得到下一步决策
+     * @param cavenode 绑定了当前位置的洞穴元素
+     * @return 加入了八个方向信息的队列
+     */
     public Vector get8AdjacentNodes(CaveNode cavenode)
     {
         Vector vector = new Vector();
@@ -412,18 +328,6 @@ public class WumplusEnvironment
         return vector;
     }
 
-    public boolean areNodesAdjacent(CaveNode cavenode, CaveNode cavenode1)
-    {
-        if(cavenode == null || cavenode1 == null)
-        {
-            return false;
-        } else
-        {
-            Vector vector = get4AdjacentNodes(cavenode);
-            return vector.contains(cavenode1);
-        }
-    }
-
     public Hashtable grid;
     public Vector unvisitedNodes;
     public Agent agent;
@@ -434,5 +338,5 @@ public class WumplusEnvironment
     private final int wallPercent = 15;
     public final int MAX_WIDTH = 10;
     public final int MAX_HEIGHT = 10;
-    public int havevalidpath = 0;//////////////////////////////
+    public int havevalidpath = 0;
 }

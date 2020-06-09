@@ -3,10 +3,17 @@ package wworld;
 import java.awt.Point;
 import java.util.*;
 
+/**
+ * 这个类用于控制AI 模式下角色的行为，包含实现AI 游戏的核心算法。
+ */
 public class Agent
 {
     private  static final int MAX_PX = 10;
 
+    /**
+     * 初始化游戏参数，包括人物是否已经获得黄金，手中是否还有武器。
+     * 还有未探索格子的安全概率，这个数据将作为人物下一步决策的重要依据。
+     */
     public Agent()
     {
         score = 0;
@@ -37,7 +44,13 @@ public class Agent
         wantsToGoHome = false;
     }
 
-    public String act(int i, WumplusEnvironment wumplusenvironment)//实现角色的动作
+    /**
+     * 实现游戏角色的所有动作，包括转身，射箭，拿起黄金，离开洞穴。
+     * @param i 动作标识，取值由有0，1，2，3，4，5，分别表示左转、右转、前进、拿起黄金、离开洞穴和射箭
+     * @param wumplusenvironment 地图环境
+     * @return 表示状态的字符串
+     */
+    public String act(int i, WumplusEnvironment wumplusenvironment)
     {
         String s = "";
         if(i == 2)
@@ -72,6 +85,9 @@ public class Agent
         return s;
     }
 
+    /**
+     * 向左转
+     */
     private void turnLeft()
     {
         switch(direction)
@@ -94,6 +110,9 @@ public class Agent
         }
     }
 
+    /**
+     * 向右转
+     */
     private void turnRight()
     {
         switch(direction)
@@ -116,6 +135,12 @@ public class Agent
         }
     }
 
+    /**
+     * 通过角色探索格子获得的信息，对人物状态（是否存活，是否已找到黄金等），
+     * 场景状态（更新未知区域的安全概率，已碰到地图的边缘等）进行更改
+     * @param wumplusenvironment 当前地图环境
+     * @return 指示状态的字符串
+     */
     public String move(WumplusEnvironment wumplusenvironment)
     {
         CaveNode cavenode = (CaveNode)wumplusenvironment.grid.get(new Point(x, y));
@@ -193,6 +218,11 @@ public class Agent
         return "MOVED";
     }
 
+    /**
+     * 拿起金币
+     * @param wumplusenvironment 当前地图
+     * @return 指示状态
+     */
     public String grab(WumplusEnvironment wumplusenvironment)
     {
         Gold gold = wumplusenvironment.gold;
@@ -210,12 +240,20 @@ public class Agent
         }
     }
 
+    /**
+     * 爬出洞穴
+     */
     public void climb()
     {
         if(x == 1 && y == 1)
             isVictorious = true;
     }
 
+    /**
+     * 射箭
+     * @param wumplusenvironment 当前地图
+     * @return 指示状态
+     */
     public String shoot(WumplusEnvironment wumplusenvironment)
     {
         if(hasArrow)
@@ -244,17 +282,21 @@ public class Agent
         }
     }
 
+    /**
+     * 死亡
+     */
     public void die()
     {
         score += -1000;
         isDead = true;
     }
 
-    public int getScore()
-    {
-        return score;
-    }
-
+    /**依据现有状态，对人物下一步行动作出决策，若已经找到黄金，则将按最短安全路线离开洞穴；
+     * 若尚未找到，则根据人物方向探索下一块未知格子；若已经到达出口，则该局游戏结束并判断胜负；
+     * 若上一步判断出怪兽位置，则发生射箭行为
+     * @param wumplusenvironment 当前地图
+     * @return 行为标识码
+     */
     public int getNextAction(WumplusEnvironment wumplusenvironment)
     {
         CaveNode cavenode = (CaveNode)wumplusenvironment.grid.get(new Point(x, y));
@@ -289,6 +331,11 @@ public class Agent
         return c != getRightDirection(direction) && c != getBackDirection(direction) ? -1 : 1;
     }
 
+    /**
+     * 判断是否要射箭杀死怪物
+     * @param wumplusenvironment 当前地图
+     * @return 是否成功射杀
+     */
     private boolean projectArrowShot(WumplusEnvironment wumplusenvironment)
     {
         Hashtable hashtable = wumplusenvironment.grid;
@@ -317,6 +364,10 @@ public class Agent
         } while(true);
     }
 
+    /**
+     * 全局检测洞穴
+     * @param wumplusenvironment 当前地图
+     */
     private void checkAllForPits(WumplusEnvironment wumplusenvironment)
     {
         Hashtable hashtable = wumplusenvironment.grid;
@@ -334,6 +385,12 @@ public class Agent
 
     }
 
+    /**
+     * 通过对每个格子上下左右四个格子的检查，判断出该处是否有陷阱，若已经确定相对的两个格子有陷阱的闪光，
+     * 则可以保证它们之间绝对有陷阱，需要标记该处为不可到达
+     * @param wumplusenvironment 当前地图
+     * @param cavenode 洞穴元素序列
+     */
     private void checkAreaForPits(WumplusEnvironment wumplusenvironment, CaveNode cavenode)
     {
         Vector vector = wumplusenvironment.get4AdjacentNodes(cavenode);
@@ -372,6 +429,10 @@ public class Agent
         }
     }
 
+    /**
+     * 全局检测怪物
+     * @param wumplusenvironment 当前地图
+     */
     private void checkAllForWumpus(WumplusEnvironment wumplusenvironment)
     {
         Hashtable hashtable = wumplusenvironment.grid;
@@ -389,6 +450,13 @@ public class Agent
 
     }
 
+    /**
+     * 通过对每个格子上下左右四个方向格子的检查，若观察到相对两格有毒气，
+     * 则它们之间绝对有恶魔，需执行射箭操作
+     * @param wumplusenvironment 当前地图
+     * @param cavenode 恶魔元素序列
+     * @return true指大概率有恶魔
+     */
     private boolean checkAreaForWumpus(WumplusEnvironment wumplusenvironment, CaveNode cavenode)
     {
         Vector vector = wumplusenvironment.get4AdjacentNodes(cavenode);
@@ -446,6 +514,11 @@ public class Agent
         return false;
     }
 
+    /**
+     * 判断并标记怪物可能性为0的点
+     * @param cavenode 地图上元素
+     * @param wumplusenvironment 当前地图
+     */
     private void noPointWumpus(CaveNode cavenode, WumplusEnvironment wumplusenvironment)
     {
         Hashtable hashtable = wumplusenvironment.grid;
@@ -467,6 +540,10 @@ public class Agent
         knownWumpusY = cavenode.y;
     }
 
+    /**
+     * 全局判断天使
+     * @param wumplusenvironment 当前地图
+     */
     private void checkAllForSupmuw(WumplusEnvironment wumplusenvironment)
     {
         Hashtable hashtable = wumplusenvironment.grid;
@@ -510,6 +587,13 @@ public class Agent
                 supmuwFriendlyProbability = 1.0D;
     }
 
+    /**
+     * 由于天使周围九个格子都有动画效果，因此难以判断出准确位置，
+     * 人物在安全的情况下尽可能多的遍历各点，争取得到天使的Bonus
+     * @param wumplusenvironment 当前地图
+     * @param cavenode 地图上的元素
+     * @return 是否有天使
+     */
     private boolean checkAreaForSupmuw(WumplusEnvironment wumplusenvironment, CaveNode cavenode)
     {
         Vector vector = wumplusenvironment.get8AdjacentNodes(cavenode);
@@ -577,6 +661,11 @@ public class Agent
         return false;
     }
 
+    /**
+     * 判断并标记没有天使的点
+     * @param cavenode 洞穴元素
+     * @param wumplusenvironment 当前地图
+     */
     private void pinPointSupmuw(CaveNode cavenode, WumplusEnvironment wumplusenvironment)
     {
         Hashtable hashtable = wumplusenvironment.grid;
@@ -597,6 +686,11 @@ public class Agent
         knownSupmuwY = cavenode.y;
     }
 
+    /**
+     * 利用图的广度优先搜索，结合对位置区域安全概率的预测，找到掘金最短路径
+     * @param wumplusenvironment 当前地图
+     * @return 成功标记
+     */
     private char shortestSafePathToUnvisited(WumplusEnvironment wumplusenvironment)
     {
         Hashtable hashtable = new Hashtable();
@@ -643,6 +737,15 @@ public class Agent
         return 'I';
     }
 
+    /**
+     * A星寻路算法
+     * @param priorityqueue 算法中将要用到的优先队列
+     * @param wumplusenvironment 当前地图
+     * @param prioritycavenode 优先级较高的洞穴元素
+     * @param c 洞穴元素标识
+     * @param i 洞穴元素序列下标
+     * @param point 当前坐标
+     */
     private void aStarTravel(PriorityQueue priorityqueue, WumplusEnvironment wumplusenvironment, PriorityCaveNode prioritycavenode, char c, int i, Point point)
     {
         CaveNode cavenode = prioritycavenode.node;
@@ -678,6 +781,11 @@ public class Agent
         }
     }
 
+    /**
+     * 得到当前方向的左转方向字符
+     * @param c 当前方向
+     * @return 左转后方向
+     */
     private char getLeftDirection(char c)
     {
         if(c == 'N')
@@ -689,6 +797,11 @@ public class Agent
         return c != 'E' ? 'I' : 'N';
     }
 
+    /**
+     * 得到当前方向的右转方向字符
+     * @param c 当前方向
+     * @return 右转后方向
+     */
     private char getRightDirection(char c)
     {
         if(c == 'N')
@@ -700,6 +813,11 @@ public class Agent
         return c != 'E' ? 'I' : 'S';
     }
 
+    /**
+     * 得到当前方向的后面方向字符
+     * @param c 当前方向
+     * @return 后面方向
+     */
     private char getBackDirection(char c)
     {
         if(c == 'N')
@@ -711,6 +829,12 @@ public class Agent
         return c != 'E' ? 'I' : 'W';
     }
 
+    /**
+     * 利用图的广度优先搜索，在已经探索过的区域中找到回程最短路径
+     * @param wumplusenvironment 当前地图
+     * @param point 当前坐标
+     * @return 成功标识符
+     */
     private char shortestSafePathToPoint(WumplusEnvironment wumplusenvironment, Point point)
     {
         Hashtable hashtable = new Hashtable();

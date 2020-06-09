@@ -4,10 +4,18 @@ import java.io.FileNotFoundException;
 import java.net.URL;
 import javax.sound.sampled.*;
 
+/**
+ * 该类用于直接播放声音，通过文件路径url，找到音频文件，并控制声音的播放与停止
+ * 与MidiPlayer不同的是，这个类是用于播放游戏进行时的一些即时音效的
+ */
 public class Sound
 {
 
-    public Sound(String s)//将表示文件路径的字符串s转化为路径url，并调用loadFile方法播放
+    /**
+     * 将表示文件路径的字符串s转化为路径url，并调用loadFile方法播放
+     * @param s 文件路径
+     */
+    public Sound(String s)
     {
         try
         {
@@ -17,6 +25,10 @@ public class Sound
         catch(Exception exception) { }
     }
 
+    /**
+     * 根据url加载音效文件
+     * @param paramURL 音效文件的url
+     */
     public void loadFile(URL paramURL) {
         try {
           this.stream = AudioSystem.getAudioInputStream(paramURL);
@@ -40,6 +52,10 @@ public class Sound
         play(true);
     }
 
+    /**
+     * 控制播放音效
+     * @param flag true时播放音效
+     */
     public void play(boolean flag)
     {
         try
@@ -54,36 +70,19 @@ public class Sound
         }
     }
 
-    public void stop()
-    {
-        clip.stop();
-        clip.setFramePosition(0);
-    }
-
-    public void pause()
-    {
-        clip.stop();
-    }
-
-    public void loop(int i)
-    {
-        clip.setLoopPoints(0, -1);
-        if(i == 0)
-            clip.loop(-1);
-        else
-            clip.loop(i);
-    }
-
+    /**
+     * 得到此音效在预加载时的播放位置
+     * @return 此音效在预加载时的播放位置
+     */
     public int getPosition()
     {
         return clip.getFramePosition();
     }
 
-    public boolean isRunning()
-    {
-        return clip.isRunning();
-    }
-
+    /**
+     * 测试用入口函数
+     * @param args
+     */
     public static void main(String args[])
     {
         Sound sound = new Sound("yumyumtaco.wav");

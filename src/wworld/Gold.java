@@ -1,5 +1,8 @@
 package wworld;
 
+/**
+ * 金币类，记录金币的位置和状态
+ */
 public class Gold
 {
 

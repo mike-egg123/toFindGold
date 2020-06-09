@@ -3,9 +3,16 @@ package gameEngine;
 import java.io.*;
 import javax.sound.midi.*;
 
+/**
+ * 媒体播放器，在每个游戏界面上调用，打开与当前界面对应文件的声音素材（背景音乐），
+ * 并加入播放序列，当加入失败时在控制台输出错误信息
+ */
 public class MidiPlayer
 {
 
+    /**
+     * 初始化，指示加载完成的变量给false，然后给seqr加载一个midi文件
+     */
     public MidiPlayer()
     {
         loaded = false;
@@ -19,13 +26,21 @@ public class MidiPlayer
         }
     }
 
+    /**
+     * 带参构造函数，实际使用的是这个
+     * @param s 根据此字符串，加载对应路径的midi文件
+     */
     public MidiPlayer(String s)
     {
         this();
         load(s);
     }
 
-    public void load(String s)//将文件路径s转化为字符串url，并添加到播放序列
+    /**
+     * 将文件路径s转化为字符串url，并添加到播放序列
+     * @param s 如上描述，就是一个文件路径
+     */
+    public void load(String s)
     {
         unload();
         try
@@ -51,6 +66,9 @@ public class MidiPlayer
         }
     }
 
+    /**
+     * 关闭加载进来的midi文件
+     */
     public void unload()
     {
         stop();
@@ -59,16 +77,11 @@ public class MidiPlayer
         loaded = false;
     }
 
-    public void setMidiID(String s)
-    {
-        midiID = s;
-    }//接口，但没有用到
 
-    public String getMidiID()//接口，但没有用到
-    {
-        return new String(midiID);
-    }
-
+    /**
+     * 播放音乐
+     * @param flag true代表着播放
+     */
     public void play(boolean flag)
     {
         if(flag)
@@ -76,27 +89,30 @@ public class MidiPlayer
         seqr.start();
     }
 
+    /**
+     * 将序列中正在播放的音频停下
+     */
     public void stop()
     {
         if(seqr.isOpen())
             seqr.stop();
     }
 
-    public boolean isRunning()
-    {
-        return seqr.isRunning();
-    }
-
-    public float getTempo()
-    {
-        return seqr.getTempoInBPM();
-    }
-
+    /**
+     * 调用了下面重载的的loop
+     * @param i 表示循环播放次数
+     */
     public void loop(int i)
     {
         loop(i, 0L, -1L);
     }
 
+    /**
+     * 控制循环播放
+     * @param i 循环播放次数
+     * @param l 起点
+     * @param l1 终点
+     */
     public void loop(int i, long l, long l1)
     {
         if(l < 0L)
@@ -116,19 +132,10 @@ public class MidiPlayer
             seqr.setLoopCount(i);
     }
 
-    public void resetTempo()
-    {
-        changeTempo(defaultTempo);
-    }
-
-    public void changeTempo(float f)
-    {
-        double d = f / seqr.getTempoInBPM();
-        seqr.setLoopStartPoint((long)((double)seqr.getLoopStartPoint() * d));
-        seqr.setLoopEndPoint((long)((double)seqr.getLoopEndPoint() * d));
-        seqr.setTempoInBPM(f);
-    }
-
+    /**
+     * 测试用入口函数
+     * @param args
+     */
     public static void main(String args[])
     {
         MidiPlayer midiplayer = new MidiPlayer("lazarus.mid");

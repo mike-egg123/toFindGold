@@ -1,5 +1,8 @@
 package wworld;
 
+/**
+ * 这个类封装了地图中每个格子的属性，包括安全概率，是否已经到达，是否不可到达等
+ */
 public class CaveNode
 {
 

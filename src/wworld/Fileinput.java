@@ -3,6 +3,9 @@ package wworld;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * 一开始想着是要加载地图文件的，所以做了这个类，但后面把加载地图文件的功能删掉了，这个类也废弃了
+ */
 public class Fileinput
 {
 

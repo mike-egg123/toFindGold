@@ -1,5 +1,8 @@
 package wworld;
 
+/**
+ * 恶魔类，记录恶魔的位置和状态
+ */
 public class Wumpus
 {
 

@@ -3,14 +3,25 @@ package gameEngine;
 import java.awt.*;
 import java.awt.geom.*;
 
-public abstract class Sprite//这是一个抽象类，封装了有关人物角色的属性参数，在不同的子类中被重写
+/**
+ * 这是一个抽象类，封装了与游戏中角色形象有关的位置参数，运动参数等信息。在之后每种角色的子类中进行了重写
+ */
+public abstract class Sprite
 {
 
+    /**
+     * 无参构造函数，设置坐标为（0.0，0.0）
+     */
     public Sprite()
     {
         this(0.0D, 0.0D);
     }
 
+    /**
+     * 设置该图形元素的各种属性
+     * @param d 横坐标
+     * @param d1 纵坐标
+     */
     public Sprite(double d, double d1)
     {
         x = d;
@@ -31,11 +42,11 @@ public abstract class Sprite//这是一个抽象类，封装了有关人物角�
         isDestroyed = false;
     }
 
-    public void setParent(Component component)
-    {
-        parent = component;
-    }
-
+    /**
+     * 渲染该图形元素
+     * @param graphics2d 绘图类对象
+     * @return 是否渲染成功
+     */
     public boolean render(Graphics2D graphics2d)
     {
         if(isDestroyed)
@@ -55,11 +66,19 @@ public abstract class Sprite//这是一个抽象类，封装了有关人物角�
         return true;
     }
 
+    /**
+     * 将当前图片绘制到GUI上
+     * @param graphics2d 绘图类对象
+     */
     protected void draw(Graphics2D graphics2d)
     {
         graphics2d.drawImage(curImage, null, null);
     }
 
+    /**
+     * 激活该图形元素，使其可以加载图片
+     * @param imageloader 图形加载器
+     */
     protected void animate(ImageLoader imageloader)
     {
         if(isDestroyed)
@@ -68,112 +87,14 @@ public abstract class Sprite//这是一个抽象类，封装了有关人物角�
             return;
     }
 
-    public void setSemiTransparency(double d)
-    {
-        if(parent == null)
-            semiTransparency = 1.0D;
-        if(d > 1.0D)
-            d = 1.0D;
-        if(d < 0.0D)
-            d = 0.0D;
-        colorTransformChanged = true;
-        semiTransparency = d;
-    }
-
-    public double getSemiTransparency()
-    {
-        return semiTransparency;
-    }
-
-    public void scale(double d, double d1)
-    {
-        scaleX = d;
-        scaleY = d1;
-        transformChanged = true;
-    }
-
-    public void rotate(double d)
-    {
-        rotation = d;
-        transformChanged = true;
-    }
-
+    /**
+     * 更新图片的透明度
+     */
     protected void updateTransform()
     {
         transform = new AffineTransform();
         transform.scale(scaleX, scaleY);
         transform.rotate((rotation / 360D) * 3.1415926535897931D * 2D);
-    }
-
-    public boolean boxCollision(Sprite sprite)//原打算用于实现碰撞效果，由于未知的原因没有实现
-    {
-        if(transformChanged)
-            updateTransform();
-        if(sprite.transformChanged)
-            sprite.updateTransform();
-        int i = (int)((x - fx * boxScale) + 0.5D);
-        int j = (int)(width * boxScale + 0.5D);
-        int k = (int)((y - fy * boxScale) + 0.5D);
-        int l = (int)(height * boxScale + 0.5D);
-        AffineTransform affinetransform = AffineTransform.getTranslateInstance(x, y);
-        affinetransform.concatenate(transform);
-        affinetransform.translate(0.0D - x, 0.0D - y);
-        Point2D apoint2d[] = new Point2D[4];
-        apoint2d[0] = affinetransform.transform(new Point(i, k), apoint2d[0]);
-        apoint2d[1] = affinetransform.transform(new Point(i + j, k), apoint2d[1]);
-        apoint2d[2] = affinetransform.transform(new Point(i + j, k + l), apoint2d[2]);
-        apoint2d[3] = affinetransform.transform(new Point(i, k + l), apoint2d[3]);
-        int i1 = (int)((sprite.x - sprite.fx * sprite.boxScale) + 0.5D);
-        int j1 = (int)(sprite.width * sprite.boxScale + 0.5D);
-        int k1 = (int)((sprite.y - sprite.fy * sprite.boxScale) + 0.5D);
-        int l1 = (int)(sprite.height * sprite.boxScale + 0.5D);
-        AffineTransform affinetransform1 = AffineTransform.getTranslateInstance(sprite.x, sprite.y);
-        affinetransform1.concatenate(sprite.transform);
-        affinetransform1.translate(0.0D - sprite.x, 0.0D - sprite.y);
-        Point2D apoint2d1[] = new Point2D[4];
-        apoint2d1[0] = affinetransform1.transform(new Point(i1, k1), apoint2d1[0]);
-        apoint2d1[1] = affinetransform1.transform(new Point(i1 + j1, k1), apoint2d1[1]);
-        apoint2d1[2] = affinetransform1.transform(new Point(i1 + j1, k1 + l1), apoint2d1[2]);
-        apoint2d1[3] = affinetransform1.transform(new Point(i1, k1 + l1), apoint2d1[3]);
-        if(axisOfSeparation(apoint2d, apoint2d1))
-            return axisOfSeparation(apoint2d1, apoint2d);
-        else
-            return false;
-    }
-
-    private boolean axisOfSeparation(Point2D apoint2d[], Point2D apoint2d1[])
-    {
-        for(int i = 0; i < 4; i++)
-        {
-            Point2D point2d = apoint2d[i];
-            Point2D point2d1 = apoint2d[(i + 1) % 4];
-            int j = (int)(point2d1.getX() - point2d.getX());
-            int k = (int)(point2d1.getY() - point2d.getY());
-            int l = k;
-            int i1 = 0 - j;
-            int j1 = j * i1 - k * l;
-            if(j1 == 0)
-                j1 = 1;
-            boolean flag = true;
-            int k1 = 0;
-            do
-            {
-                if(k1 >= 4)
-                    break;
-                Point2D point2d2 = apoint2d1[k1];
-                double d = ((double)j * (point2d2.getY() - point2d.getY()) + (double)k * (point2d.getX() - point2d2.getX())) / (double)j1;
-                if(d < 0.0D)
-                {
-                    flag = false;
-                    break;
-                }
-                k1++;
-            } while(true);
-            if(flag)
-                return false;
-        }
-
-        return true;
     }
 
     public Component parent;
