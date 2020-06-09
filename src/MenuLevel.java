@@ -1,9 +1,16 @@
 import gameEngine.*;
 import java.awt.*;
 
+/**
+ * 菜单类，控制菜单界面的图像、声音以及四个选项
+ */
 public class MenuLevel extends Level
 {
 
+    /**
+     * 初始化菜单界面，设置键盘监听器，音频播放器，选项选中情况等
+     * @param component 显示菜单界面的容器
+     */
     public MenuLevel(Component component)
     {
         super(component);
@@ -18,6 +25,9 @@ public class MenuLevel extends Level
         menuNum = 0;
     }
 
+    /**
+     * 加载数据，将菜单显示界面的所有元素加载进来
+     */
     public void loadData()
     {
         MenuBackgroundsSprite.loadImages();
@@ -33,6 +43,9 @@ public class MenuLevel extends Level
         randomMap = new MenuSprite(192D, 252D, 'r');
     }
 
+    /**
+     * 清屏
+     */
     public void clean()
     {
         super.clean();
@@ -42,6 +55,10 @@ public class MenuLevel extends Level
         config = null;
     }
 
+    /**
+     * 循环事件监听器，根据键盘的输入显示对应的内容，在选中开始游戏和AI游戏选项后会有二级菜单，
+     * 也在这里进行控制
+     */
     public void timerLoop()
     {
         MasterPanel masterpanel = (MasterPanel)parent;
@@ -159,6 +176,9 @@ public class MenuLevel extends Level
         imgLoader.waitForAll();
     }
 
+    /**
+     * 激活所有元素
+     */
     private void animateAll()
     {
         menuBg.animate(imgLoader);
@@ -171,6 +191,10 @@ public class MenuLevel extends Level
         randomMap.animate(imgLoader);
     }
 
+    /**
+     * 将所有元素画到GUI上
+     * @param graphics2d 绘图类对象
+     */
     public void render(Graphics2D graphics2d)
     {
         MasterPanel masterpanel = (MasterPanel)parent;

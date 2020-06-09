@@ -4,21 +4,35 @@ import java.awt.*;
 import java.io.PrintStream;
 import java.util.Hashtable;
 
+/**
+ * 设置游戏菜单界面背景
+ */
 public class MenuBackgroundsSprite extends Sprite
 {
 
+    /**
+     * 初始化游戏菜单界面
+     * @param d 横坐标
+     * @param d1 纵坐标
+     */
     public MenuBackgroundsSprite(double d, double d1)
     {
         super(d, d1);
         numInstances++;
     }
 
+    /**
+     * 销毁
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 加载游戏菜单界面图片，设置坐标
+     */
     public static void loadImages()
     {
         try
@@ -33,6 +47,9 @@ public class MenuBackgroundsSprite extends Sprite
         catch(Exception exception) { }
     }
 
+    /**
+     * 清屏
+     */
     public static void clean()
     {
         numInstances = 0;
@@ -40,6 +57,10 @@ public class MenuBackgroundsSprite extends Sprite
         imageTable.clear();
     }
 
+    /**
+     * 激活游戏菜单页面
+     * @param imageloader 承载游戏菜单页面的元素
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);

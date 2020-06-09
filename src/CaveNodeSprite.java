@@ -4,9 +4,18 @@ import java.io.PrintStream;
 import java.net.URL;
 import java.util.Hashtable;
 
+/**
+ * 实现游戏中洞穴内部的显示，如墙壁，陷阱
+ */
 public class CaveNodeSprite extends Sprite
 {
 
+    /**
+     * 初始化洞穴内部元素
+     * @param d 元素的横坐标
+     * @param d1 元素的纵坐标
+     * @param c 元素的类型，取值有'O' 'P' 'F' 'W'，分别对应着内部墙壁，陷阱，地板和四周墙壁
+     */
     public CaveNodeSprite(double d, double d1, char c)
     {
         super(d, d1);
@@ -18,12 +27,19 @@ public class CaveNodeSprite extends Sprite
         hasLeftWall = false;
     }
 
+    /**
+     * 用来销毁洞内元素
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 用来加载洞内元素的图片，有地板图片、背景图片、陷阱图片和墙壁图片
+     * @param imageloader 图片容器，承载上述图片
+     */
     public static void loadImages(ImageLoader imageloader)
     {
         try
@@ -64,12 +80,19 @@ public class CaveNodeSprite extends Sprite
         catch(Exception exception) { }
     }
 
+    /**
+     * 清除元素，以便开始新的一局
+     */
     public static void clean()
     {
         numInstances = 0;
         imageTable.clear();
     }
 
+    /**
+     * 激活洞内元素
+     * @param imageloader 图片容器，与上面的对应
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);
@@ -77,6 +100,23 @@ public class CaveNodeSprite extends Sprite
         fy = 0.0D;
     }
 
+    /**
+     * 这个是根据约定好的字母与元素的对应形式，生成对应的地图，举例如下
+     * ..W...P..W
+     * .......PW.
+     * ....W.P.P.
+     * .W.....W..
+     * ....W..W.W
+     * .W..W.WW..
+     * ........PP
+     * ......W..P
+     * .W..W.....
+     * ....P....W
+     * 5 10
+     * 7 9
+     * 7 10
+     * @param graphics2d 绘图类，使用它的drawImage()方法可以在GUI上画出想要的图片
+     */
     protected void draw(Graphics2D graphics2d)
     {
         if(type == 'O')

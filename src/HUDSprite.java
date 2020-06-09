@@ -3,9 +3,19 @@ import java.awt.*;
 import java.io.PrintStream;
 import java.util.Hashtable;
 
+/**
+ * 平行板类，控制游戏中界面左侧背包中当前物品的显示
+ */
 public class HUDSprite extends Sprite
 {
 
+    /**
+     * 初始化，其中的isSelected表明是否拥有该种物品
+     * @param d 横坐标
+     * @param d1 纵坐标
+     * @param c 类型，取值有'g' 'f' 'a' 'p' 'v' 'n' 'd'，分别对应着金币、奖品、弓箭、面板（外框）
+     *          胜利语句、未取得金币就爬出洞穴语句和死亡语句
+     */
     public HUDSprite(double d, double d1, char c)
     {
         super(d, d1);
@@ -14,12 +24,19 @@ public class HUDSprite extends Sprite
         isSelected = false;
     }
 
+    /**
+     * 销毁
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 加载上述图片
+     * @param imageloader 图片容器，承载上述图片
+     */
     public static void loadImages(ImageLoader imageloader)
     {
         try
@@ -81,12 +98,19 @@ public class HUDSprite extends Sprite
         catch(Exception exception) { }
     }
 
+    /**
+     * 清屏
+     */
     public static void clean()
     {
         numInstances = 0;
         imageTable.clear();
     }
 
+    /**
+     * 激活上述图片
+     * @param imageloader 承载上述图片
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);

@@ -1,9 +1,13 @@
 import java.io.*;
 
-public class ConfigWumpus
-    implements Serializable
+/**
+ * 用于加载游戏的配置文件，开发时调试用
+ */
+public class ConfigWumpus implements Serializable
 {
-
+    /**
+     * 由于游戏上线后不需要这些功能，故已废弃
+     */
     public ConfigWumpus()
     {
         try

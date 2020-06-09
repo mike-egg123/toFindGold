@@ -2,9 +2,17 @@ import gameEngine.*;
 import java.awt.*;
 import java.util.Hashtable;
 
-public class AgentSprite extends Sprite//实现游戏中精灵的动画效果
+/**
+ * 实现游戏中精灵的动画效果，如行走效果，抓取金币效果，射箭效果，死亡效果
+ */
+public class AgentSprite extends Sprite
 {
 
+    /**
+     * 初始化精灵行为：位置、方向、行走状态，numInstances指示着这是洞内的第几个元素
+     * @param d 精灵位置横坐标
+     * @param d1 精灵位置纵坐标
+     */
     public AgentSprite(double d, double d1)
     {
         super(d, d1);
@@ -14,12 +22,19 @@ public class AgentSprite extends Sprite//实现游戏中精灵的动画效果
         animationDone = true;
     }
 
+    /**
+     * 销毁精灵
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 加载精灵图片以及精灵相关的特效图片
+     * @param imageloader 图片容器，用以存放和组合图片
+     */
     public static void loadImages(ImageLoader imageloader)
     {
         try
@@ -103,12 +118,19 @@ public class AgentSprite extends Sprite//实现游戏中精灵的动画效果
         catch(Exception exception) { }
     }
 
+    /**
+     * 清除精灵状态，以便开始新的一局
+     */
     public static void clean()
     {
         numInstances = 0;
         imageTable.clear();
     }
 
+    /**
+     * 激活精灵，使其可以根据键盘的输入做出对应的动作
+     * @param imageloader 图片容器，与之前的那个一致，承载游戏里的所有图片
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);
@@ -188,6 +210,10 @@ public class AgentSprite extends Sprite//实现游戏中精灵的动画效果
         animTimer++;
     }
 
+    /**
+     * 设置精灵状态
+     * @param s 取值有"walk" "gold" "shoot" "die"，分别对应四种状态
+     */
     public void setAnimation(String s)
     {
         animationDone = false;
@@ -196,6 +222,10 @@ public class AgentSprite extends Sprite//实现游戏中精灵的动画效果
         animation = s;
     }
 
+    /**
+     * 设置精灵方向
+     * @param c 取值有'N' 'S' 'E' 'W' ，分别对应着北、南、东、西
+     */
     public void setDirection(char c)
     {
         if(c == 'N' || c == 'S' || c == 'E' || c == 'W')

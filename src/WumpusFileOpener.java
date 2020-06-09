@@ -3,6 +3,9 @@ import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+/**
+ * 调试用类，废弃
+ */
 public class WumpusFileOpener extends FileDialog
     implements WindowListener
 {

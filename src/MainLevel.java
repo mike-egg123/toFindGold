@@ -3,9 +3,17 @@ import java.awt.*;
 import java.util.*;
 import wworld.*;
 
+/**
+ * 观察游戏进程，监视游戏中的关键事件（包括恶魔和天使的状态，金币的状态，
+ * 是否拿到Bonus奖励，游戏胜负），并在每一帧之后刷新界面显示，进行图像渲染
+ */
 public class MainLevel extends Level
 {
 
+    /**
+     * 初始化游戏进程，设置显示容器，键盘监听器，音频播放器等
+     * @param component 显示容器
+     */
     public MainLevel(Component component)
     {
         super(component);
@@ -22,6 +30,9 @@ public class MainLevel extends Level
         victoryCondition = 0;
     }
 
+    /**
+     * 加载数据，太多了不想说了，反正就所有元素呗
+     */
     public void loadData()
     {
         MasterPanel masterpanel = (MasterPanel)parent;
@@ -104,6 +115,9 @@ public class MainLevel extends Level
         soundTimer = 0;
     }
 
+    /**
+     * 清屏
+     */
     public void clean()
     {
         super.clean();
@@ -115,6 +129,9 @@ public class MainLevel extends Level
         config = null;
     }
 
+    /**
+     * 游戏进程监控器，在这里对游戏进程监控，根据上一帧的情况渲染下一帧
+     */
     public void timerLoop()
     {
         MasterPanel masterpanel = (MasterPanel)parent;
@@ -316,6 +333,12 @@ public class MainLevel extends Level
         imgLoader.waitForAll();
     }
 
+    /**
+     * 从素材图片中取出对应图片，实际上是通过将在游戏界面的坐标映射到素材图中的坐标的方法得到
+     * @param i 游戏界面中横坐标
+     * @param j 游戏界面中纵坐标
+     * @return 返回对应的素材图中坐标
+     */
     private Point gridToPanelCoords(int i, int j)
     {
         i = 48 + 24 * i;            //每个小方格占有24个像素，（1，1）为左下角起点
@@ -323,6 +346,9 @@ public class MainLevel extends Level
         return new Point(i, j);
     }
 
+    /**
+     * 更新周围墙体，因为墙体有两种不同的显示形式：未发现时的全黑形式和已发现时的墙体本身
+     */
     private void updateWalls()
     {
         Hashtable hashtable = wumplusEnvironment.grid;
@@ -355,6 +381,9 @@ public class MainLevel extends Level
 
     }
 
+    /**
+     * 激活所有元素，太多了不想说了
+     */
     private void animateAll()
     {
         hudPanel.animate(imgLoader);
@@ -383,6 +412,10 @@ public class MainLevel extends Level
         entranceSprite.animate(imgLoader);
     }
 
+    /**
+     * 将所有元素画在游戏界面
+     * @param graphics2d 绘图类对象，实现上述功能就靠它了
+     */
     public void render(Graphics2D graphics2d)
     {
         MasterPanel masterpanel = (MasterPanel)parent;

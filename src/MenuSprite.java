@@ -2,9 +2,19 @@ import gameEngine.*;
 import java.awt.*;
 import java.util.Hashtable;
 
+/**
+ * 对菜单界面的选择作出响应，传递一个字符给相应的方法，游戏进入对应新界面
+ */
 public class MenuSprite extends Sprite
 {
 
+    /**
+     * 初始化，其中的isSelected表示该选项是否被选中
+     * @param d 横坐标
+     * @param d1 纵坐标
+     * @param c 第一级或第二级菜单界面选择的类型，取值如下：'a' 'n' 'h' 'q' 't' 'l' 'r'
+     *          分别对应着：ai模式，开始游戏，帮助说明，退出游戏，标题（就是显示，并不能被选中），简单模式，困难模式
+     */
     public MenuSprite(double d, double d1, char c)
     {
         super(d, d1);
@@ -13,12 +23,19 @@ public class MenuSprite extends Sprite
         isSelected = false;
     }
 
+    /**
+     * 销毁
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 加载图片
+     * @param imageloader 图片加载器
+     */
     public static void loadImages(ImageLoader imageloader)
     {
         try
@@ -77,12 +94,19 @@ public class MenuSprite extends Sprite
         catch(Exception exception) { }
     }
 
+    /**
+     * 清屏
+     */
     public static void clean()
     {
         numInstances = 0;
         imageTable.clear();
     }
 
+    /**
+     * 激活所有元素
+     * @param imageloader 图片加载器
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);

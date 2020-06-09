@@ -2,9 +2,18 @@ import gameEngine.*;
 import java.awt.*;
 import java.util.Hashtable;
 
+/**
+ * 控制帮助页面中图片的显示（将被HowToPlayLevel使用）
+ */
 public class HowToPlaySprite extends Sprite
 {
 
+    /**
+     * 初始化帮助页面中的元素
+     * @param d 横坐标
+     * @param d1 纵坐标
+     * @param c 类型，取值有'b' '2' '6' 'e'，分别对应着背景图片、游戏场景之一、游戏场景之二、“按回车键继续”字样
+     */
     public HowToPlaySprite(double d, double d1, char c)
     {
         super(d, d1);
@@ -12,12 +21,19 @@ public class HowToPlaySprite extends Sprite
         type = c;
     }
 
+    /**
+     * 销毁元素
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 加载上述图片
+     * @param imageloader 承载上述图片
+     */
     public static void loadImages(ImageLoader imageloader)
     {
         try
@@ -52,12 +68,19 @@ public class HowToPlaySprite extends Sprite
         catch(Exception exception) { }
     }
 
+    /**
+     * 清除上述图片
+     */
     public static void clean()
     {
         numInstances = 0;
         imageTable.clear();
     }
 
+    /**
+     * 激活上述图片
+     * @param imageloader 图片容器，承载上述图片
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);

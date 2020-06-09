@@ -3,9 +3,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * 帮助页面，控制多页帮助的图文显示
+ */
 public class HowToPlayLevel extends Level
 {
 
+    /**
+     * 初始化帮助页面，设置好显示的容器，键盘监听器，配置文件监听器（已废弃），
+     * 音频文件播放器并直接开始循环播放
+     * @param component 准备显示该帮助页面的容器
+     */
     public HowToPlayLevel(Component component)
     {
         super(component);
@@ -18,6 +26,9 @@ public class HowToPlayLevel extends Level
         midi.loop(-1);
     }
 
+    /**
+     * 加载数据，这些是在帮助页面特有的图形，需要在此重新加载
+     */
     public void loadData()
     {
         MasterPanel masterpanel = (MasterPanel)parent;
@@ -69,6 +80,9 @@ public class HowToPlayLevel extends Level
         initCurSlide();
     }
 
+    /**
+     * 清除在帮助页面加载的对象，以便开始游戏
+     */
     public void clean()
     {
         super.clean();
@@ -81,6 +95,9 @@ public class HowToPlayLevel extends Level
         config = null;
     }
 
+    /**
+     * 监听键盘事件，根据对应的键盘输入，显示对应的帮助界面
+     */
     public void timerLoop()
     {
         MasterPanel masterpanel = (MasterPanel)parent;
@@ -295,6 +312,9 @@ public class HowToPlayLevel extends Level
         imgLoader.waitForAll();
     }
 
+    /**
+     * 初始化当前页面
+     */
     public void initCurSlide()
     {
         if(slideNum == 0)
@@ -420,6 +440,12 @@ public class HowToPlayLevel extends Level
             if(slideNum != 6);
     }
 
+    /**
+     * 拆分素材图，将在帮助页面的坐标转成在素材图中的坐标
+     * @param i 在帮助页面的横坐标
+     * @param j 在帮助页面的纵坐标
+     * @return 返回的是在素材图中的坐标
+     */
     private Point gridToPanelCoords(int i, int j)
     {
         i = 48 + 24 * i;
@@ -427,6 +453,9 @@ public class HowToPlayLevel extends Level
         return new Point(i, j);
     }
 
+    /**
+     * 调用各个对象的激活函数，激活所有的元素
+     */
     private void animateAll()
     {
         hudPanel.animate(imgLoader);
@@ -459,6 +488,10 @@ public class HowToPlayLevel extends Level
         entranceSprite.animate(imgLoader);
     }
 
+    /**
+     * 将所有元素画在GUI上面
+     * @param graphics2d 绘图类对象，调用其中的方法可以将一些图片和文字画在GUI上面
+     */
     public void render(Graphics2D graphics2d)
     {
         MasterPanel masterpanel = (MasterPanel)parent;
@@ -572,6 +605,13 @@ public class HowToPlayLevel extends Level
         enterSprite.render(graphics2d);
     }
 
+    /**
+     * 将字符串居中画出
+     * @param s 将要被画的字符串
+     * @param i 原横坐标
+     * @param j 原纵坐标
+     * @param g 绘图类，将要使用其drawString()方法将调整至居中的字符串画在GUI上
+     */
     public void drawCenteredString(String s, int i, int j, Graphics g)
     {
         g.setFont(new Font("宋体", Font.BOLD, 8));

@@ -4,9 +4,19 @@ import java.io.PrintStream;
 import java.net.URL;
 import java.util.Hashtable;
 
+/**
+ * 特效类，通过调用前面构造的图像显示有关的类，利用静态多帧图片，
+ * 完成地图中陷阱，恶魔，天使等动画效果的动态显示
+ */
 public class FXSprite extends Sprite
 {
 
+    /**
+     * 初始化特效
+     * @param d 横坐标
+     * @param d1 纵坐标
+     * @param c 类型，取值有'B' 'S' 'M' 'G' 'E'，分别对应着微风、恶臭、moo、金币闪烁和起点的特效图
+     */
     public FXSprite(double d, double d1, char c)
     {
         super(d, d1);
@@ -14,12 +24,19 @@ public class FXSprite extends Sprite
         type = c;
     }
 
+    /**
+     * 销毁特效
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 加载特效图
+     * @param imageloader 图片容器，承载上述特效图
+     */
     public static void loadImages(ImageLoader imageloader)
     {
         try
@@ -86,12 +103,19 @@ public class FXSprite extends Sprite
         catch(Exception exception) { }
     }
 
+    /**
+     * 清除所有特效，以便开始新的一局
+     */
     public static void clean()
     {
         numInstances = 0;
         imageTable.clear();
     }
 
+    /**
+     * 激活特效，采用连续滚动特效图中不同的静态图片，显示出动态特效的效果
+     * @param imageloader 图片容器，承载所有特效图
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);

@@ -4,10 +4,16 @@ import java.io.PrintStream;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Main extends JFrame
-    implements WindowListener, WindowFocusListener, ComponentListener
+/**
+ * 游戏主函数。继承了JFrame类，在屏幕上显示弹窗并设置窗口监视器
+ */
+public class Main extends JFrame implements WindowListener, WindowFocusListener, ComponentListener
 {
 
+    /**
+     * 初始化显示窗体
+     * @param flag 是否为全屏模式
+     */
     public Main(boolean flag)
     {
         super("FIND YOUR GOLD!!!");
@@ -59,6 +65,9 @@ public class Main extends JFrame
         //System.out.println("Game Window successfully created!!!");
     }
 
+    /**
+     * 使得显示容器在窗体的中间，但是后面改了位置后发现这个方法似乎失效了。。
+     */
     public void recenterScreen()
     {
         Dimension dimension = getSize();
@@ -67,6 +76,10 @@ public class Main extends JFrame
         screenP.setLocation(0, 0);
     }
 
+    /**
+     *以下方法纯粹是在使得Main方法不是一个抽象类，因为Main继承了一些监听器抽象类，
+     * 而对其中的一些抽象方法并没有实际使用
+     */
     public void windowActivated(WindowEvent windowevent)
     {
         //System.out.println("Window Activated");
@@ -141,6 +154,10 @@ public class Main extends JFrame
     {
     }
 
+    /**
+     * 主函数入口，也是整个游戏的入口
+     * @param args 没用哈哈哈哈哈哈哈哈哈哈哈
+     */
     public static void main(String args[])
     {
         String args1[] = args;

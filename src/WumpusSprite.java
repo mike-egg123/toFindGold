@@ -3,9 +3,19 @@ import java.awt.*;
 import java.io.PrintStream;
 import java.util.Hashtable;
 
+/**
+ * 在游戏中怪物的动态效果较多（有活着和死掉两种状态，每种状态都有对应的特效），
+ * 因此专门用一个类控制怪物的显示。
+ */
 public class WumpusSprite extends Sprite
 {
 
+    /**
+     * 初始化坏怪，设置坐标和活着的状态，以及是好是坏
+     * @param d 横坐标
+     * @param d1 纵坐标
+     * @param c 怪物类型，'W'是坏怪，'S'是好怪
+     */
     public WumpusSprite(double d, double d1, char c)
     {
         super(d, d1);
@@ -14,12 +24,19 @@ public class WumpusSprite extends Sprite
         type = c;
     }
 
+    /**
+     * 销毁
+     */
     public void destroy()
     {
         isDestroyed = true;
         numInstances--;
     }
 
+    /**
+     * 加载好怪和坏怪的图片
+     * @param imageloader 图片加载器
+     */
     public static void loadImages(ImageLoader imageloader)
     {
         try
@@ -58,12 +75,19 @@ public class WumpusSprite extends Sprite
         catch(Exception exception) { }
     }
 
+    /**
+     * 清屏
+     */
     public static void clean()
     {
         numInstances = 0;
         imageTable.clear();
     }
 
+    /**
+     * 激活所有怪物
+     * @param imageloader 图片加载器
+     */
     protected void animate(ImageLoader imageloader)
     {
         super.animate(imageloader);
@@ -88,6 +112,10 @@ public class WumpusSprite extends Sprite
         animTimer++;
     }
 
+    /**
+     * 设置状态
+     * @param s 有两个取值： "dead" "alive"，分别对应着死的和活的
+     */
     public void setAnimation(String s)
     {
         animTimer = 0;
